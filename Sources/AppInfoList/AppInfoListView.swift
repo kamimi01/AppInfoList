@@ -85,7 +85,6 @@ private extension AppInfoListView {
             Text(appearance.cellTitles.license)
                 .foregroundColor(appearance.cellTextColor)
         }
-        .navigationTitle(appearance.cellTitles.license)
         .navigationBarTitleDisplayMode(.inline)
     }
 
