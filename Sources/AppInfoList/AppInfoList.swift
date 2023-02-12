@@ -17,8 +17,8 @@ public struct AppInfoListView: View {
                 if appearance.showCells.isShowingWriteReview {
                     writeAppReview
                 }
-                if appearance.showCells.isShowingKnowApp {
-                    knowApp
+                if appearance.showCells.isShowingKnowDeveloper {
+                    knowDeveloper
                 }
             }
 
@@ -50,7 +50,7 @@ private extension AppInfoListView {
             openURL(info.termOfUseURL)
         }) {
             HStack {
-                Text("利用規約")
+                Text(appearance.cellTitles.termsOfUse)
                 Spacer()
             }
         }
@@ -62,7 +62,7 @@ private extension AppInfoListView {
             openURL(info.privacyPolicyURL)
         }) {
             HStack {
-                Text("プライバシーポリシー")
+                Text(appearance.cellTitles.privacyPolicy)
                 Spacer()
             }
         }
@@ -83,7 +83,7 @@ private extension AppInfoListView {
             openURL(URL(string: "https://apps.apple.com/app/id\(info.appStoreID)?action=write-review")!)
         }) {
             HStack {
-                Text("レビューを書く")
+                Text(appearance.cellTitles.writeReview)
                 Spacer()
             }
         }
@@ -93,19 +93,19 @@ private extension AppInfoListView {
     var shareApp: some View {
         ShareLink(item: info.appURL) {
             HStack {
-                Text("アプリを共有する")
+                Text(appearance.cellTitles.shareApp)
                 Spacer()
             }
         }
         .foregroundColor(appearance.cellTextColor)
     }
 
-    var knowApp: some View {
+    var knowDeveloper: some View {
         Button(action:{
             openURL(info.developerInfoURL)
         }) {
             HStack {
-                Text("開発者について知る")
+                Text(appearance.cellTitles.knowDeveloper)
                 Spacer()
             }
         }
@@ -114,7 +114,7 @@ private extension AppInfoListView {
 
     var version: some View {
         HStack {
-            Text("バージョン")
+            Text(appearance.cellTitles.version)
                 .foregroundColor(appearance.cellTextColor)
             Spacer()
             Text(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "")
