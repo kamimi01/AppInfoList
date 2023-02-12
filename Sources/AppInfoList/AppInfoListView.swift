@@ -16,26 +16,32 @@ public struct AppInfoListView: View {
     public var body: some View {
         List {
             Section(header: Text("サポート")) {
-                if appearance.showCells.isShowingWriteReview {
-                    writeAppReview
+                if let id = info.appStoreID,
+                   appearance.showCells.isShowingWriteReview {
+                    writeAppReview(id: id)
                 }
-                if appearance.showCells.isShowingKnowDeveloper {
-                    knowDeveloper
+                if let url = info.developerInfoURL,
+                   appearance.showCells.isShowingKnowDeveloper {
+                    knowDeveloper(url: url)
                 }
             }
 
             Section(header: Text("アプリについて")) {
-                if appearance.showCells.isShowingShareApp {
-                    shareApp
+                if let url = info.appURL,
+                   appearance.showCells.isShowingShareApp {
+                    shareApp(url: url)
                 }
-                if appearance.showCells.isShowingTermsOfUse {
-                    termsOfUse
+                if let url = info.termOfUseURL,
+                   appearance.showCells.isShowingTermsOfUse {
+                    termsOfUse(url: url)
                 }
-                if appearance.showCells.isShowingPrivacyPolicy {
-                    privacyPolicy
+                if let url = info.privacyPolicyURL,
+                   appearance.showCells.isShowingPrivacyPolicy {
+                    privacyPolicy(url: url)
                 }
-                if appearance.showCells.isShowingLicense {
-                    license
+                if let url = licenseFileURL,
+                   appearance.showCells.isShowingLicense {
+                    license(url: url)
                 }
                 if appearance.showCells.isShowingVersion {
                     version
@@ -47,9 +53,9 @@ public struct AppInfoListView: View {
 }
 
 private extension AppInfoListView {
-    var termsOfUse: some View {
+    func termsOfUse(url: URL) -> some View {
         Button(action:{
-            openURL(info.termOfUseURL)
+            openURL(url)
         }) {
             HStack {
                 Text(appearance.cellTitles.termsOfUse)
@@ -59,9 +65,9 @@ private extension AppInfoListView {
         .foregroundColor(appearance.cellTextColor)
     }
 
-    var privacyPolicy: some View {
+    func privacyPolicy(url: URL) -> some View {
         Button(action:{
-            openURL(info.privacyPolicyURL)
+            openURL(url)
         }) {
             HStack {
                 Text(appearance.cellTitles.privacyPolicy)
@@ -71,19 +77,18 @@ private extension AppInfoListView {
         .foregroundColor(appearance.cellTextColor)
     }
 
-    var license: some View {
-        let fileURL = Bundle.main.url(forResource: "license-list", withExtension: "plist")!
-        return NavigationLink("ライセンス") {
-            LicenseListView(fileURL: fileURL)
+    func license(url: URL) -> some View {
+        NavigationLink("ライセンス") {
+            LicenseListView(fileURL: url)
                 .foregroundColor(appearance.cellTextColor)
                 .navigationTitle("ライセンス")
                 .navigationBarTitleDisplayMode(.inline)
         }
     }
 
-    var writeAppReview: some View {
+    func writeAppReview(id: String) -> some View {
         Button(action:{
-            openURL(URL(string: "https://apps.apple.com/app/id\(info.appStoreID)?action=write-review")!)
+            openURL(URL(string: "https://apps.apple.com/app/id\(id)?action=write-review")!)
         }) {
             HStack {
                 Text(appearance.cellTitles.writeReview)
@@ -93,8 +98,8 @@ private extension AppInfoListView {
         .foregroundColor(appearance.cellTextColor)
     }
 
-    var shareApp: some View {
-        ShareLink(item: info.appURL) {
+    func shareApp(url: URL) -> some View {
+        ShareLink(item: url) {
             HStack {
                 Text(appearance.cellTitles.shareApp)
                 Spacer()
@@ -103,9 +108,9 @@ private extension AppInfoListView {
         .foregroundColor(appearance.cellTextColor)
     }
 
-    var knowDeveloper: some View {
+    func knowDeveloper(url: URL) -> some View {
         Button(action:{
-            openURL(info.developerInfoURL)
+            openURL(url)
         }) {
             HStack {
                 Text(appearance.cellTitles.knowDeveloper)
