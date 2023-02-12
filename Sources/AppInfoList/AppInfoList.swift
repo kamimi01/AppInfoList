@@ -12,37 +12,35 @@ public struct AppInfoListView: View {
     }
 
     public var body: some View {
-        NavigationView {
-            List {
-                Section(header: Text("サポート")) {
-                    if appearance.showCells.isShowingWriteReview {
-                        writeAppReview
-                    }
-                    if appearance.showCells.isShowingKnowApp {
-                        knowApp
-                    }
+        List {
+            Section(header: Text("サポート")) {
+                if appearance.showCells.isShowingWriteReview {
+                    writeAppReview
                 }
-
-                Section(header: Text("アプリについて")) {
-                    if appearance.showCells.isShowingShareApp {
-                        shareApp
-                    }
-                    if appearance.showCells.isShowingTermsOfUse {
-                        termsOfUse
-                    }
-                    if appearance.showCells.isShowingPrivacyPolicy {
-                        privacyPolicy
-                    }
-//                    if appearance.showCells.isShowingLicense {
-//                        license
-//                    }
-                    if appearance.showCells.isShowingVersion {
-                        version
-                    }
+                if appearance.showCells.isShowingKnowApp {
+                    knowApp
                 }
             }
-            .listStyle(.insetGrouped)
+
+            Section(header: Text("アプリについて")) {
+                if appearance.showCells.isShowingShareApp {
+                    shareApp
+                }
+                if appearance.showCells.isShowingTermsOfUse {
+                    termsOfUse
+                }
+                if appearance.showCells.isShowingPrivacyPolicy {
+                    privacyPolicy
+                }
+                //                    if appearance.showCells.isShowingLicense {
+                //                        license
+                //                    }
+                if appearance.showCells.isShowingVersion {
+                    version
+                }
+            }
         }
+        .listStyle(.insetGrouped)
     }
 }
 
