@@ -16,7 +16,7 @@ public struct AppInfoAppearance {
     /// セルを表示するかどうか
     let showCells: ShowCells
 
-    init(cellTextColor: Color = .black, versionTextColor: Color = .black, showCells: ShowCells = ShowCells()) {
+    public init(cellTextColor: Color = .black, versionTextColor: Color = .black, showCells: ShowCells = ShowCells()) {
         self.cellTextColor = cellTextColor
         self.versionTextColor = versionTextColor
         self.showCells = showCells
@@ -40,7 +40,7 @@ public struct ShowCells {
     /// バージョンを表示するか
     let isShowingVersion: Bool
 
-    init(isShowingTermsOfUse: Bool = true, isShowingPrivacyPolicy: Bool = true, isShowingWriteReview: Bool = true, isShowingShareApp: Bool = true, isShowingKnowApp: Bool = true, isShowingLicense: Bool = true, isShowingVersion: Bool = true) {
+    public init(isShowingTermsOfUse: Bool = true, isShowingPrivacyPolicy: Bool = true, isShowingWriteReview: Bool = true, isShowingShareApp: Bool = true, isShowingKnowApp: Bool = true, isShowingLicense: Bool = true, isShowingVersion: Bool = true) {
         self.isShowingTermsOfUse = isShowingTermsOfUse
         self.isShowingPrivacyPolicy = isShowingPrivacyPolicy
         self.isShowingWriteReview = isShowingWriteReview

@@ -19,7 +19,7 @@ public struct AppInfo {
     /// App Store の ID
     let appStoreID: String
 
-    init(termOfUseURL: URL, privacyPolicyURL: URL, appURL: URL, developerInfoURL: URL, appStoreID: String) {
+    public init(termOfUseURL: URL, privacyPolicyURL: URL, appURL: URL, developerInfoURL: URL, appStoreID: String) {
         self.termOfUseURL = termOfUseURL
         self.privacyPolicyURL = privacyPolicyURL
         self.appURL = appURL
