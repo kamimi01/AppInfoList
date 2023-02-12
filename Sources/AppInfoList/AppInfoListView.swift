@@ -75,6 +75,7 @@ private extension AppInfoListView {
         let fileURL = Bundle.main.url(forResource: "license-list", withExtension: "plist")!
         return NavigationLink("ライセンス") {
             LicenseListView(fileURL: fileURL)
+                .foregroundColor(appearance.cellTextColor)
                 .navigationTitle("ライセンス")
                 .navigationBarTitleDisplayMode(.inline)
         }
