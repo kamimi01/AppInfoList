@@ -15,15 +15,17 @@ let package = Package(
             targets: ["AppInfoList"]),
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-//         .package(url: "https://github.com/cybozu/LicenseList.git", from: "0.2.0"),
+//         Dependencies declare other packages that this package depends on.
+         .package(url: "https://github.com/cybozu/LicenseList.git", from: "0.2.0"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "AppInfoList",
-            dependencies: []),
+            dependencies: [
+                .product(name: "LicenseList", package: "LicenseList")
+            ]),
         .testTarget(
             name: "AppInfoListTests",
             dependencies: ["AppInfoList"]),

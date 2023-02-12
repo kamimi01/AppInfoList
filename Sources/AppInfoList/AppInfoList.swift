@@ -1,14 +1,16 @@
 import SwiftUI
-//import LicenseList
+import LicenseList
 
 public struct AppInfoListView: View {
     @Environment(\.openURL) var openURL
     let appearance: AppInfoAppearance
     let info: AppInfo
+    let licenseFileURL: URL
 
-    public init(appearance: AppInfoAppearance, info: AppInfo) {
+    public init(appearance: AppInfoAppearance = AppInfoAppearance(), info: AppInfo, licenseFileURL: URL) {
         self.appearance = appearance
         self.info = info
+        self.licenseFileURL = licenseFileURL
     }
 
     public var body: some View {
@@ -32,9 +34,9 @@ public struct AppInfoListView: View {
                 if appearance.showCells.isShowingPrivacyPolicy {
                     privacyPolicy
                 }
-                //                    if appearance.showCells.isShowingLicense {
-                //                        license
-                //                    }
+                if appearance.showCells.isShowingLicense {
+                    license
+                }
                 if appearance.showCells.isShowingVersion {
                     version
                 }
@@ -69,14 +71,14 @@ private extension AppInfoListView {
         .foregroundColor(appearance.cellTextColor)
     }
 
-//    var license: some View {
-//        let fileURL = Bundle.main.url(forResource: "license-list", withExtension: "plist")!
-//        return NavigationLink("ライセンス") {
-//            LicenseListView(fileURL: fileURL)
-//                .navigationTitle("ライセンス")
-//                .navigationBarTitleDisplayMode(.inline)
-//        }
-//    }
+    var license: some View {
+        let fileURL = Bundle.main.url(forResource: "license-list", withExtension: "plist")!
+        return NavigationLink("ライセンス") {
+            LicenseListView(fileURL: fileURL)
+                .navigationTitle("ライセンス")
+                .navigationBarTitleDisplayMode(.inline)
+        }
+    }
 
     var writeAppReview: some View {
         Button(action:{
