@@ -3,8 +3,8 @@ import SwiftUI
 
 public struct AppInfoListView {
     @Environment(\.openURL) var openURL
-    let appearance: AppInfoAppearance
-    let info: AppInfo
+    public let appearance: AppInfoAppearance
+    public let info: AppInfo
 
     public init(appearance: AppInfoAppearance, info: AppInfo) {
         self.appearance = appearance
