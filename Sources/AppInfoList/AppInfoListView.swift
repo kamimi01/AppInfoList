@@ -16,36 +16,28 @@ public struct AppInfoListView: View {
     public var body: some View {
         List {
             Section(header: Text("サポート")) {
-                if let id = info.appStoreID,
-                   appearance.showCells.isShowingWriteReview {
+                if let id = info.appStoreID {
                     writeAppReview(id: id)
                 }
-                if let url = info.developerInfoURL,
-                   appearance.showCells.isShowingKnowDeveloper {
+                if let url = info.developerInfoURL {
                     knowDeveloper(url: url)
                 }
             }
 
             Section(header: Text("アプリについて")) {
-                if let url = info.appURL,
-                   appearance.showCells.isShowingShareApp {
+                if let url = info.appURL {
                     shareApp(url: url)
                 }
-                if let url = info.termOfUseURL,
-                   appearance.showCells.isShowingTermsOfUse {
+                if let url = info.termOfUseURL {
                     termsOfUse(url: url)
                 }
-                if let url = info.privacyPolicyURL,
-                   appearance.showCells.isShowingPrivacyPolicy {
+                if let url = info.privacyPolicyURL {
                     privacyPolicy(url: url)
                 }
-                if let url = licenseFileURL,
-                   appearance.showCells.isShowingLicense {
+                if let url = licenseFileURL {
                     license(url: url)
                 }
-                if appearance.showCells.isShowingVersion {
-                    version
-                }
+                version
             }
         }
         .listStyle(.insetGrouped)
@@ -123,11 +115,14 @@ private extension AppInfoListView {
     }
 
     var version: some View {
-        HStack {
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
+        let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? ""
+
+        return HStack {
             Text(appearance.cellTitles.version)
                 .foregroundColor(appearance.cellTextColor)
             Spacer()
-            Text(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "")
+            Text("\(version)(\(buildNumber))")
                 .foregroundColor(appearance.versionTextColor)
         }
     }
