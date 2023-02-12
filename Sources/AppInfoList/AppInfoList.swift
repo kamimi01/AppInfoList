@@ -1,10 +1,10 @@
 import SwiftUI
 //import LicenseList
 
-public struct AppInfoListView {
+public struct AppInfoListView: View {
     @Environment(\.openURL) var openURL
-    public let appearance: AppInfoAppearance
-    public let info: AppInfo
+    let appearance: AppInfoAppearance
+    let info: AppInfo
 
     public init(appearance: AppInfoAppearance, info: AppInfo) {
         self.appearance = appearance

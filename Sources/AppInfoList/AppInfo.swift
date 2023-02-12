@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// アプリについての情報を定義する
 public struct AppInfo {
     /// 利用規約のリンク
     let termOfUseURL: URL

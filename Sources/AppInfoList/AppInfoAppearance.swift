@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+/// アプリについてのリストの見た目を定義する
 public struct AppInfoAppearance {
     /// セルのテキストの色
     let cellTextColor: Color
