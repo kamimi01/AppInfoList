@@ -78,12 +78,15 @@ private extension AppInfoListView {
     }
 
     func license(url: URL) -> some View {
-        NavigationLink("ライセンス") {
+        NavigationLink {
             LicenseListView(fileURL: url)
                 .foregroundColor(appearance.cellTextColor)
-                .navigationTitle("ライセンス")
-                .navigationBarTitleDisplayMode(.inline)
+        } label: {
+            Text(appearance.cellTitles.license)
+                .foregroundColor(appearance.cellTextColor)
         }
+        .navigationTitle(appearance.cellTitles.license)
+        .navigationBarTitleDisplayMode(.inline)
     }
 
     func writeAppReview(id: String) -> some View {
