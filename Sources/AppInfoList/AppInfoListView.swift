@@ -34,9 +34,7 @@ public struct AppInfoListView: View {
                 if let url = info.privacyPolicyURL {
                     privacyPolicy(url: url)
                 }
-                if let url = licenseFileURL {
-                    license(url: url)
-                }
+                license(url: licenseFileURL)
                 version
             }
         }
