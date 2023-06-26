@@ -5,9 +5,9 @@ public struct AppInfoListView: View {
     @Environment(\.openURL) var openURL
     let appearance: AppInfoAppearance
     let info: AppInfo
-    let licenseFileURL: URL
+    let licenseFileURL: URL?
 
-    public init(appearance: AppInfoAppearance = AppInfoAppearance(), info: AppInfo, licenseFileURL: URL) {
+    public init(appearance: AppInfoAppearance = AppInfoAppearance(), info: AppInfo, licenseFileURL: URL?) {
         self.appearance = appearance
         self.info = info
         self.licenseFileURL = licenseFileURL
