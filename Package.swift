@@ -24,7 +24,7 @@ let package = Package(
                 .product(name: "LicenseList", package: "LicenseList")
             ],
             resources: [
-                .copy("Resources/Localizable")
+                .copy("Resources/Localizable.xcstrings")
             ]
         ),
         .testTarget(
