@@ -15,7 +15,7 @@ public struct AppInfoListView: View {
 
     public var body: some View {
         List {
-            Section(header: Text("サポート")) {
+            Section(header: Text("Support")) {
                 if let id = info.appStoreID {
                     writeAppReview(id: id)
                 }
@@ -24,7 +24,7 @@ public struct AppInfoListView: View {
                 }
             }
 
-            Section(header: Text("アプリについて")) {
+            Section(header: Text("About App")) {
                 if let url = info.appURL {
                     shareApp(url: url)
                 }
