@@ -41,7 +41,15 @@ public struct CellTitles {
     /// バージョンのタイトル
     let version: String
 
-    public init(termsOfUse: String = "利用規約", privacyPolicy: String = "プライバシーポリシー", writeReview: String = "レビューを書く", shareApp: String = "アプリを共有する", knowDeveloper: String = "開発者について知る", license: String = "ライセンス", version: String = "バージョン") {
+    public init(
+        termsOfUse: String = String(localized: "Terms of Use"),
+        privacyPolicy: String = String(localized: "Privacy Policy"),
+        writeReview: String = String(localized: "Write Review"),
+        shareApp: String = String(localized: "Share App"),
+        knowDeveloper: String = String(localized: "Know Developer"),
+        license: String = String(localized: "License"),
+        version: String = String(localized: "Version")
+    ) {
         self.termsOfUse = termsOfUse
         self.privacyPolicy = privacyPolicy
         self.writeReview = writeReview
