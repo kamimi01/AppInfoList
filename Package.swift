@@ -22,7 +22,11 @@ let package = Package(
             name: "AppInfoList",
             dependencies: [
                 .product(name: "LicenseList", package: "LicenseList")
-            ]),
+            ],
+            resources: [
+                .copy("Resources/Localizable")
+            ]
+        ),
         .testTarget(
             name: "AppInfoListTests",
             dependencies: ["AppInfoList"]),
