@@ -7,7 +7,7 @@ let package = Package(
     name: "AppInfoList",
     defaultLocalization: "en",
     platforms: [
-        .iOS(.v17),
+        .iOS(.v16),
     ],
     products: [
         .library(
@@ -22,9 +22,6 @@ let package = Package(
             name: "AppInfoList",
             dependencies: [
                 .product(name: "LicenseList", package: "LicenseList")
-            ],
-            resources: [
-                .process("Resources/Localizable.xcstrings")
             ]
         ),
         .testTarget(

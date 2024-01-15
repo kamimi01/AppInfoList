@@ -44,7 +44,7 @@ public struct CellTitles {
     public init(
         termsOfUse: String = String(localized: "Terms of Use"),
         privacyPolicy: String = String(localized: "Privacy Policy"),
-        writeReview: String = String(localized: "Write Review", bundle: Bundle.appInfoListModule),
+        writeReview: String = String(localized: "Write Review"),
         shareApp: String = String(localized: "Share App"),
         knowDeveloper: String = String(localized: "Know Developer"),
         license: String = String(localized: "License"),
@@ -57,11 +57,5 @@ public struct CellTitles {
         self.knowDeveloper = knowDeveloper
         self.license = license
         self.version = version
-    }
-}
-
-extension Bundle {
-    public static var appInfoListModule: Bundle {
-        Bundle.module
     }
 }
